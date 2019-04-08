@@ -10,6 +10,8 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import medium.posts.verify.automation.tasks.OpenTheBrowser;
+import medium.posts.verify.automation.userinterfaces.GoogleHomePage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
@@ -18,7 +20,8 @@ public class MediumPostsInformationStepDefinition {
 
 	@Managed(driver = "chrome")
 	private WebDriver hisBrowser;
-	private Actor esteban = Actor.named("Esteban");
+    private Actor esteban = Actor.named("Esteban");
+    private GoogleHomePage googleHomePage;
 
 	@Before
 	public void setUp() {
@@ -26,9 +29,8 @@ public class MediumPostsInformationStepDefinition {
     }
     
     @Given("^the medium home page loaded$")
-    public void theMediumHomePageLoaded() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void theMediumHomePageLoaded() {
+		esteban.wasAbleTo(OpenTheBrowser.on(googleHomePage));
     }
 
     @When("^i search the posts stored in a excel file$")
