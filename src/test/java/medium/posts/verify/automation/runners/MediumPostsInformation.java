@@ -11,6 +11,4 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
         glue="medium.posts.verify.automation.stepdefinitions",
         snippets=SnippetType.CAMELCASE,
         monochrome = true)
-public class MediumPostsInformation {
-
-}
+public class MediumPostsInformation {}

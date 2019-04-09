@@ -12,25 +12,35 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import medium.posts.verify.automation.tasks.OpenTheBrowser;
 import medium.posts.verify.automation.userinterfaces.GoogleHomePage;
+import medium.posts.verify.automation.userinterfaces.GoogleResultsPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Managed;
 
 public class MediumPostsInformationStepDefinition {
 
-	@Managed(driver = "chrome")
-	private WebDriver hisBrowser;
+    @Managed()
+    private WebDriver hisBrowser;
     private Actor esteban = Actor.named("Esteban");
     private GoogleHomePage googleHomePage;
 
-	@Before
-	public void setUp() {
-		esteban.can(BrowseTheWeb.with(hisBrowser));
+    @Before
+    public void setUp() {
+        esteban.can(BrowseTheWeb.with(hisBrowser));
     }
-    
+
     @Given("^the medium home page loaded$")
     public void theMediumHomePageLoaded() {
-		esteban.wasAbleTo(OpenTheBrowser.on(googleHomePage));
+        esteban.wasAbleTo(OpenTheBrowser.on(googleHomePage));
+        esteban.wasAbleTo(
+            Enter.theValue("medium\n")
+            .into(GoogleHomePage.INPUT_SEARCH)
+        );
+        esteban.wasAbleTo(
+            Click.on(GoogleResultsPage.MEDIUM_RESULT)
+        );
     }
 
     @When("^i search the posts stored in a excel file$")
