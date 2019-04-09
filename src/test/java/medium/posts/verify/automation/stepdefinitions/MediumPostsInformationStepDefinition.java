@@ -33,12 +33,13 @@ public class MediumPostsInformationStepDefinition {
 
     @Given("^the medium home page loaded$")
     public void theMediumHomePageLoaded() {
-        esteban.wasAbleTo(OpenTheBrowser.on(googleHomePage));
         esteban.wasAbleTo(
+
+            OpenTheBrowser.on(googleHomePage),
+
             Enter.theValue("medium\n")
-            .into(GoogleHomePage.INPUT_SEARCH)
-        );
-        esteban.wasAbleTo(
+            .into(GoogleHomePage.INPUT_SEARCH),
+
             Click.on(GoogleResultsPage.MEDIUM_RESULT)
         );
     }
