@@ -11,6 +11,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import medium.posts.verify.automation.tasks.OpenTheBrowser;
+import medium.posts.verify.automation.tasks.OpenTheMedium;
 import medium.posts.verify.automation.tasks.Search;
 import medium.posts.verify.automation.userinterfaces.GoogleHomePage;
 import medium.posts.verify.automation.userinterfaces.GoogleResultsPage;
@@ -41,7 +42,7 @@ public class MediumPostsInformationStepDefinition {
             Search.theTerm("medium")
                 .into(GoogleHomePage.INPUT_SEARCH),
 
-            Click.on(GoogleResultsPage.MEDIUM_RESULT)
+            OpenTheMedium.homePage()
         );
     }
 
